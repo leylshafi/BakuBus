@@ -1,0 +1,53 @@
+﻿<Window x:Class="Source.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Source.Views"
+        xmlns:map="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        mc:Ignorable="d"
+        Title="BakuBus" Height="450" Width="800" Loaded="Window_Loaded" Icon="/StaticFiles/Images/logo.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <map:Map Grid.Column="1" Center="40.4093, 49.8671" ZoomLevel="11" x:Name="m">
+            <map:Pushpin Grid.Column="1" ></map:Pushpin>
+        </map:Map>
+        
+        <Grid Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Image Source="/StaticFiles/Images/bakuBusLogo.png" Stretch="Fill" ></Image>
+            <StackPanel Grid.Row="1" Background="DarkRed" >
+                <Label Foreground="White" FontSize="15" FontFamily="Cambria">Selected Route:</Label>
+                <Label Foreground="White" FontSize="15" FontFamily="Cambria" Content="{Binding ElementName=cmbox, Path=SelectedValue}"></Label>
+                <ComboBox x:Name="cmbox" Grid.Row="1" Height="30" VerticalAlignment="Top" Margin="7 40" SelectedIndex="0" VerticalContentAlignment="Center"></ComboBox>
+               
+            </StackPanel>
+            <TextBlock Grid.Row="1" Background="LightSlateGray" Foreground="WhiteSmoke" Text="BakuBus © 2022" VerticalAlignment="Bottom" Margin="0 3" FontSize="14"></TextBlock>
+            
+
+
+            <!--<ListView Grid.Row="1" ItemsSource="{Binding BakuBus.Buses}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Attributes.BUS_ID}" Header="BUS_ID"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Attributes.PREV_STOP}" Header="PREV_STOP"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Attributes.LATITUDE}" Header="LATITUDE"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Attributes.LONGITUDE}" Header="LONGITUDE"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Attributes.DISPLAY_ROUTE_CODE}" Header="No"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
+        </Grid>
+
+       
+        
+        
+        
+    </Grid>
+</Window>
